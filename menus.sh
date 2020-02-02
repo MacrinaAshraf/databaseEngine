@@ -3,7 +3,7 @@
 function menu {
 	while [ true ]
 	do
-		select i in "List Tables" "Create Table" "Select from databases" "Delete Table" "Update Table" "Back to Main Menu"
+		select i in "Show Tables" "Create Table" "Select from databases" "Delete Table" "Update Table" "Back to Main Menu"
 		do
 			case $i in
 				"Show Tables" ) 
@@ -26,9 +26,10 @@ function menu {
 
 
 function mainmenu {
+	. ./database_functions.sh
 	while [ true ]
 	do
-		select i in "Create Database" "Connect to Database" "List Databases" "Exit"
+		select i in "Create Database" "Connect to Database" "Show Databases" "Exit"
 		do
 			case $i in
 				"Create Database" ) 
@@ -37,6 +38,11 @@ function mainmenu {
 					menu
 				break ;;
 				"Show Databases" )
+					echo "___________________________________________"
+					echo "Available Databases"
+					echo "___________________________________________"
+					listdatabases
+					echo "___________________________________________"
 				break ;;
 				"Exit" )
 					exit

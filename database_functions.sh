@@ -1,19 +1,20 @@
 #!/bin/bash
 
-function listDatabases {
+function listdatabases {
+    #getting databses from folder and putting them in dbArray
+    dbArray=(`ls Database`)
 
-    databases=(`ls Database`)
-
-    if [ "${#databases[@]}" != 0 ];
+    if [ "${#dbArray[@]}" != 0 ];
     then
-        for i in ${databases[@]}
+        for i in ${dbArray[@]}
         do
             echo $i
         done
     else
-        echo "There are no Databases to show."
+        echo "There are no dbArray to show."
     fi
-
 }
 
-listDatabases
+
+
+listdbArray
