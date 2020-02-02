@@ -3,12 +3,14 @@
 function menu {
 	while [ true ]
 	do
-		select i in "List Tables" "Create Table" "Delete Table" "Update Table" "Back to Main Menu"
+		select i in "List Tables" "Create Table" "Select from databases" "Delete Table" "Update Table" "Back to Main Menu"
 		do
 			case $i in
-				"List Tables" ) 
+				"Show Tables" ) 
 				break ;;
 				"Create Tables" )
+				break ;;
+				"Select from databases" )
 				break ;;
 				"Delete Tables" )
 				break ;;
@@ -34,7 +36,7 @@ function mainmenu {
 				"Connect to Database" )
 					menu
 				break ;;
-				"List Databases" )
+				"Show Databases" )
 				break ;;
 				"Exit" )
 					exit
