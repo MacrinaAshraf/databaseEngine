@@ -33,6 +33,7 @@ function mainmenu {
 		do
 			case $i in
 				"Create Database" ) 
+					createDatabase
 				break ;;
 				"Connect to Database" )
 					menu

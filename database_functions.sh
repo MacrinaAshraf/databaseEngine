@@ -15,6 +15,25 @@ function listdatabases {
     fi
 }
 
+function createDatabase {
+
+	echo "type Database Name please";
+	read dbName;
+
+	if [ -d "Database/$dbName" ]
+	then
+		clear
+ 		echo "$dbName is already exist"
+	else
+		mkdir Database/$dbName;
+		#cd "Database/$dbName"
+ 		echo "$dbName created successfully";
+	fi
+}
+
+
+
+
 
 
 listdbArray
