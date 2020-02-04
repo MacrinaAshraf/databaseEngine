@@ -18,11 +18,11 @@ function listDatabases {
 }
 
 function connectToDatabase {
-    
-    if [ -d "Database/$1" ]
+    path="Database/$1"
+    if [ -d "$path" ]
     then
         echo "Switched to $1"
-        menu $1
+        menu $path
     else
         echo "This database does not exist"
     fi
