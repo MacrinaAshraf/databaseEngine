@@ -1,6 +1,8 @@
 #!/bin/bash
 
-function listdatabases {
+. ./sub_menu.sh
+
+function listDatabases {
     #getting databses from folder and putting them in dbArray
     dbArray=(`ls Database`)
 
@@ -15,6 +17,13 @@ function listdatabases {
     fi
 }
 
-
-
-listdbArray
+function connectToDatabase {
+    
+    if [ -d "Database/$1" ]
+    then
+        echo "Switched to database $1"
+        menu $1
+    else
+        echo "This database does not exist"
+    fi
+}

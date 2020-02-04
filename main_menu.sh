@@ -1,30 +1,5 @@
 #!/bin/bash
 
-function menu {
-	while [ true ]
-	do
-		select i in "Show Tables" "Create Table" "Select from databases" "Delete Table" "Update Table" "Back to Main Menu"
-		do
-			case $i in
-				"Show Tables" ) 
-				break ;;
-				"Create Tables" )
-				break ;;
-				"Select from databases" )
-				break ;;
-				"Delete Tables" )
-				break ;;
-				"Update Tables" )
-				break ;;
-				"Back to Main Menu" )
-					mainmenu
-				break ;;
-			esac
-		done
-	done
-}
-
-
 function mainmenu {
 	. ./database_functions.sh
 	while [ true ]
@@ -35,13 +10,15 @@ function mainmenu {
 				"Create Database" ) 
 				break ;;
 				"Connect to Database" )
-					menu
+					echo "Enter a databse name to connect to "
+					read dbName
+					connectToDatabase $dbName
 				break ;;
 				"Show Databases" )
 					echo "___________________________________________"
 					echo "Available Databases"
 					echo "___________________________________________"
-					listdatabases
+					listDatabases
 					echo "___________________________________________"
 				break ;;
 				"Exit" )
