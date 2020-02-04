@@ -13,7 +13,7 @@ function listDatabases {
             echo $i
         done
     else
-        echo "There are no dbArray to show."
+        echo "There are no databases to show."
     fi
 }
 
@@ -21,7 +21,7 @@ function connectToDatabase {
     
     if [ -d "Database/$1" ]
     then
-        echo "Switched to database $1"
+        echo "Switched to $1"
         menu $1
     else
         echo "This database does not exist"
@@ -35,11 +35,20 @@ function createDatabase {
 
 	if [ -d "Database/$dbName" ]
 	then
-		clear
- 		echo "$dbName is already exist"
+ 		echo "$dbName already exists"
 	else
 		mkdir Database/$dbName;
-		#cd "Database/$dbName"
  		echo "$dbName created successfully";
 	fi
+}
+
+function dropDatabase {
+    if [ -d "Database/$1" ]
+    then
+        rm -r Database/$1
+        echo "$1 is deleted successfully"
+    else
+        echo "This is not a valid database name"
+        echo "Please try again with the right name"
+    fi
 }
