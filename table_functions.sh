@@ -1,12 +1,31 @@
 #!/bin/bash
 
+function showTables {
+    path=$1
+    cd $path
+    tables=(`ls *.data`)
+
+    if [ "${#tables[@]}" != 0 ];
+    then
+        for i in ${tables[@]}
+        do
+            echo $i | cut -d. -f1
+        done
+    else
+        echo "There are no tables to show."
+    fi
+    cd ..
+    cd ..
+}
+
 function createTable {
     path=$1
     tableName=$2
 
     touch $1/$tableName.data
     touch $1/$tableName.meta
-    
+
+
 }
 
 function deleteTable {

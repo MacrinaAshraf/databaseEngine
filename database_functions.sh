@@ -2,7 +2,7 @@
 
 . ./sub_menu.sh
 
-function listDatabases {
+function showDatabases {
     #getting databses from folder and putting them in dbArray
     dbArray=(`ls Database`)
 

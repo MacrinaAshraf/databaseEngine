@@ -7,10 +7,11 @@ function menu {
 	while [ true ]
 	do
 		echo "___________________________________________"
-		select i in "Show Tables" "Create Table" "Insert Table" "Select from Table" "Delete Table" "Back to Main Menu"
+		select i in "Show Tables" "Create Table" "Insert in Table" "Select from Table" "Delete Table" "Back to Main Menu"
 		do
 			case $i in
 				"Show Tables" ) 
+					showTables $path
 				break ;;
 				"Create Table" )
 					echo "___________________________________________"
@@ -19,7 +20,7 @@ function menu {
 
 					createTable $path $tableName
 				break ;;
-				"Insert Table" )
+				"Insert in Table" )
 				break ;;
 				"Select from Table" )
 				break ;;
