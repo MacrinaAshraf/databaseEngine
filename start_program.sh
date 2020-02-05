@@ -1,5 +1,5 @@
 #!/bin/bash
 
-. ./menus.sh
+. ./main_menu.sh
 
 mainmenu
