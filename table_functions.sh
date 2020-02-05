@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function createTable {
+    path=$1
+    tableName=$2
+
+    touch $1/$tableName.data
+    touch $1/$tableName.meta
+    
+}
+
 function deleteTable {
     #path to table file is sent as 2 parameters to this function from sub_menu.sh 
     if [ -f "$1/$2.data" ]
