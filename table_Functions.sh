@@ -8,7 +8,7 @@ case $var in
 echo "enter table Name"
 read tableName
 touch $tableName.meta
-touch $tableName.txt
+touch $tableName.data
 echo "$tableName created successfully"
     while [ true ]
     do

@@ -1,27 +1,11 @@
 #!/bin/bash
-function createTable{
-#echo "type table Name please";
-#read tableName;
+function createTable {
 
-while [ true ]
-do
-select var in  "Create Table"  "quit" 
-do
-case $var in
-"Create Table" )
-echo "enter table Name"
-read tableName
-touch $tableName.meta
-touch $tableName.txt
-break;;
-"quit" )
-exit
-break;;
-esac
-done
-done
-
-
+    echo "Enter table Name"
+    read tableName
+    touch $1/$tableName.meta
+    touch $1/$tableName.data
+    
 }
 
 function showTables {
@@ -42,14 +26,31 @@ function showTables {
     cd ..
 }
 
-function createTable {
-    path=$1
-    tableName=$2
-
-    touch $1/$tableName.data
-    touch $1/$tableName.meta
-
-
+function deleteRecordFromTable {
+    if [ -f "$1/$2.data" ]
+    then
+        noOfRows=`cat $1/$2.data | wc -l`
+        echo $noOfRows
+        if [ "$noOfRows" == "0" ]
+        then 
+            echo "This Table is empty"
+        else
+            echo "Enter the row that you want to delete"
+            read row
+            if [ "$row" -gt "$noOfRows" ]
+                then 
+                echo "This number is out of range"
+            elif [ "$row" -lte "0" ]
+                then
+                echo "This number is out of range"
+            else
+                sed -i "$row d" $1/$2.data
+            fi
+        fi
+    else
+        echo "This is not a valid file "
+        echo "Please re-enter a valid name when you try again"
+    fi
 }
 
 function deleteTable {
@@ -62,5 +63,4 @@ function deleteTable {
         echo "This is not a valid file "
         echo "Please re-enter a valid name when you try again"
     fi
-    echo "path = $1/$2"
 }

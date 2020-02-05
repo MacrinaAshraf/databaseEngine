@@ -1,17 +1,12 @@
 #!/bin/bash
 
-. ./table_functions.sh
-
 function menu {
+	. ./table_functions.sh
 	path=$1
 	while [ true ]
 	do
 		echo "___________________________________________"
-<<<<<<< HEAD
 		select i in "Show Tables" "Create Table" "Insert in table" "Select from Table" "Delete Table" "Back to Main Menu"
-=======
-		select i in "Show Tables" "Create Table" "Insert in Table" "Select from Table" "Delete Table" "Back to Main Menu"
->>>>>>> 732362d6af7b17c4f948b43c42ee20a455c88996
 		do
 			case $i in
 				"Show Tables" ) 
@@ -34,8 +29,21 @@ function menu {
 					echo "___________________________________________"
 					echo "Enter a table name to delete"
 					read tableName
-
-					deleteTable $path $tableName
+					echo "___________________________________________"
+					echo "1) Delete the whole table"
+					echo "2) Delete a record from the table"
+					read choice
+					case $choice in
+						1 ) 
+						deleteTable $path $tableName
+						;;
+						2 ) 
+						deleteRecordFromTable $path $tableName
+						;;
+						* ) 
+						echo "This is not a valid choice"
+						;;
+					esac
 				break ;;
 				"Back to Main Menu" )
 					return
