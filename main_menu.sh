@@ -25,7 +25,7 @@ function mainmenu {
 					echo "___________________________________________"
 					echo "Available Databases"
 					echo "___________________________________________"
-					listDatabases
+					showDatabases
 					echo "___________________________________________"
 				break ;;
 				"Drop Database" )
