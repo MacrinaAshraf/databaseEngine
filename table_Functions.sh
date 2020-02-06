@@ -10,32 +10,6 @@ read tableName
 touch $tableName.meta
 touch $tableName.data
 echo "$tableName created successfully"
-    while [ true ]
-    do
-    select tabledata in "Insert Data"  "Exit"
-    do
-   case $tabledata in
-    "Insert Data" )
-    echo "Insert Datatypes type ok to stop"    
-    read datatype
-    while [$read != "stop"]
-    do
-    echo "$datatype ," >> $tableName.meta
-    done
-    x=wc -w $tableName.meta
-    echo  "Data you want to store"
-      read data
-      for ((I=0;I<x;I++))
-       do
-      echo "$read , " >> $tableName.txt   
-     done
-     break;;
-   "EXit" )
-    exit
-    break;;
-    esac
-    done
-    done
 break;;
 "quit" )
 exit

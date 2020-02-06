@@ -64,3 +64,20 @@ function deleteTable {
         echo "Please re-enter a valid name when you try again"
     fi
 }
+
+function Insert{
+    echo "Insert Datatypes type ok to stop"    
+    read datatype
+    while [$read != "stop"]
+    do
+    echo "$datatype ," >> $tableName.meta
+    done
+    x=wc -w $tableName.meta
+    echo  "Data you want to store"
+      read data
+      for ((I=0;I<x;I++))
+       do
+      echo "$read , " >> $tableName.txt   
+    done  
+
+}
