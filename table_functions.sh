@@ -1,18 +1,18 @@
 #!/bin/bash
+
 function createTable {
 
-    echo "Enter table Name"
-    read tableName
-    touch $1/$tableName.meta
-    touch $1/$tableName.data
+    touch $1/$2.meta
+    touch $1/$2.data
     
 }
 
 function showTables {
     path=$1
     cd $path
-    tables=(`ls *.data`)
 
+    tables=(`ls *.data`)
+    echo ${tables[0]}
     if [ "${#tables[@]}" != 0 ];
     then
         for i in ${tables[@]}
@@ -40,9 +40,9 @@ function deleteRecordFromTable {
             if [ "$row" -gt "$noOfRows" ]
                 then 
                 echo "This number is out of range"
-            elif [ "$row" -lte "0" ]
+            elif [ "$row" -le "0" ]
                 then
-                echo "This number is out of range"
+                echo "$row is out of range"
             else
                 sed -i "$row d" $1/$2.data
             fi
