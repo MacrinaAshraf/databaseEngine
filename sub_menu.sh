@@ -21,6 +21,7 @@ function menu {
 					createTable $path $tableName
 				break ;;
 				"Insert in Table" )
+                                   Insert
 				break ;;
 				"Select from Table" )
 				break ;;
