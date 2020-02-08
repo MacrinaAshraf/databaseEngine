@@ -21,9 +21,18 @@ function menu {
 					createTable $path $tableName
 				break ;;
 				"Insert in Table" )
-                                   Insert
+					echo "___________________________________________"
+					echo "Enter the name of the table"
+					read tableName
+					echo "___________________________________________"
+                   insertInTable $path $tableName
 				break ;;
 				"Select from Table" )
+					echo "___________________________________________"
+					echo "Enter a table name to show its data"
+					read tableName
+					echo "___________________________________________"
+					selectFromTable $path $tableName
 				break ;;
 				"Delete Table" )
 					echo "___________________________________________"

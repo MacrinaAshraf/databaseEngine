@@ -45,11 +45,16 @@ function createDatabase {
 function dropDatabase {
     #to-do
     #validation on input that it isn't empty
-    #if [ $1 ]
-    if [ -d "Database/$1" ]
+    if [ "$1" != "" ] 
     then
-        rm -r Database/$1
-        echo "$1 is deleted successfully"
+        if [ -d "Database/$1" ]
+        then
+            rm -r Database/$1
+            echo "$1 is deleted successfully"
+        else
+            echo "This is not a valid database name"
+            echo "Please try again with the right name"
+        fi
     else
         echo "This is not a valid database name"
         echo "Please try again with the right name"
