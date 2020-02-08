@@ -43,6 +43,9 @@ function createDatabase {
 }
 
 function dropDatabase {
+    #to-do
+    #validation on input that it isn't empty
+    #if [ $1 ]
     if [ -d "Database/$1" ]
     then
         rm -r Database/$1

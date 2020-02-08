@@ -14,9 +14,10 @@ function menu {
 				break ;;
 				"Create Table" )
 					echo "___________________________________________"
-					echo "Enter a the name of the new table"
+					echo "Enter the name of the new table"
 					read tableName
-
+					echo "___________________________________________"
+					
 					createTable $path $tableName
 				break ;;
 				"Insert in Table" )

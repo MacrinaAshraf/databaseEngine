@@ -1,9 +1,36 @@
 #!/bin/bash
 
 function createTable {
+    path=$1/$2
+    touch $path.meta
+    touch $path.data
 
-    touch $1/$2.meta
-    touch $1/$2.data
+    validFlag=false
+    while [ "$validFlag" == false ]
+    do
+        read -p "Enter how many columns do you want to add to you table: " noOfColumns
+        if [[ $noOfColumns =~ ^[1-9]+$ ]]
+        then
+            validFlag=true
+        else 
+            echo "Invalid input, try again"
+        fi
+    done
+    echo $noOfColumns > $path.meta
+
+    counter=0
+
+    while [ "$counter" != "$noOfColumns" ]
+    do 
+        read -p "Enter the name of the column: " colName
+        echo $colName >> $path.meta
+        
+        read -p "Enter the type of the column: " colType
+        echo $colType >> $path.meta
+        
+        let counter=$counter+1
+
+    done 
     
 }
 
@@ -12,7 +39,7 @@ function showTables {
     cd $path
 
     tables=(`ls *.data`)
-    echo ${tables[0]}
+
     if [ "${#tables[@]}" != 0 ];
     then
         for i in ${tables[@]}
