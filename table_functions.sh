@@ -8,7 +8,7 @@ function createTable {
     validFlag=false
     while [ "$validFlag" == false ]
     do
-        read -p "Enter how many columns do you want to add to you table: " noOfColumns
+        read -p -e "Enter how many columns do you want to add to you table: " noOfColumns
         if [[ $noOfColumns =~ ^[1-9]+$ ]]
         then
             validFlag=true
@@ -26,7 +26,7 @@ function createTable {
         validFlag=false
         while [ "$validFlag" == false ]
         do
-            read -p "Enter the name of the column: " colName
+            read -e -p "Enter the name of the column: " colName
             if [[ $colName =~ ^([[:lower:]]|[[:upper:]])+$ ]]
             then
                 validFlag=true
@@ -39,7 +39,7 @@ function createTable {
         echo "Choose the type of the column: " 
         echo "1) String"
 		echo "2) Int"
-        read colType
+        read -e colType
             
         case $colType in
             1 ) 
@@ -118,13 +118,19 @@ function deleteTable {
 }
 
 function selectFromTable {
-    lines=$( sed -n 'p' $1/$2.data )
-    if [ -z  "$lines" ]
-    then 
-        echo "This table is Empty!";
+    if [ -f "$1/$2" ]
+    then
+        lines=$( sed -n 'p' $1/$2.data )
+        if [ -z  "$lines" ]
+        then 
+            echo "This table is Empty!";
+        else
+            printf '%s\n' "${lines[@]}"
+        fi
     else
-        printf '%s\n' "${lines[@]}"
-    fi 
+        echo "This is not a valid file "
+        echo "Please re-enter a valid name when you try again"
+    fi
 }
 
 function insertInTable {

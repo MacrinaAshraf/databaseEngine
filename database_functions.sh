@@ -31,15 +31,20 @@ function connectToDatabase {
 function createDatabase {
 
 	echo "type Database Name please";
-	read dbName;
+	read -e dbName;
 
-	if [ -d "Database/$dbName" ]
-	then
- 		echo "$dbName already exists"
-	else
-		mkdir Database/$dbName;
- 		echo "$dbName created successfully";
-	fi
+    if [ -z $dbName ]
+    then
+        echo " Invalid Input"
+    else    
+        if [ -d "Database/$dbName" ]
+        then
+            echo "$dbName already exists"
+        else
+            mkdir Database/$dbName;
+            echo "$dbName created successfully";
+        fi
+    fi
 }
 
 function dropDatabase {

@@ -4,6 +4,7 @@ function mainmenu {
 	. ./database_functions.sh
 	while [ true ]
 	do
+		PS3="Enter your choice: "
 		echo "___________________________________________"
 		select i in "Create Database" "Connect to Database" "Show Databases" "Drop Database" "Exit"
 		do
@@ -16,7 +17,7 @@ function mainmenu {
 				"Connect to Database" )
 					echo "___________________________________________"
 					echo "Enter a databse name to connect to "
-					read dbName
+					read -e dbName
 					echo "___________________________________________"
 					connectToDatabase $dbName
 					echo "___________________________________________"
@@ -31,7 +32,7 @@ function mainmenu {
 				"Drop Database" )
 					echo "___________________________________________"
 					echo "Enter a databse name you want to drop"
-					read dbName
+					read -e dbName
 					echo "___________________________________________"
 					dropDatabase $dbName
 					echo "___________________________________________"

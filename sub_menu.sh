@@ -5,6 +5,7 @@ function menu {
 	path=$1
 	while [ true ]
 	do
+		PS3="Enter your choice: "
 		echo "___________________________________________"
 		select i in "Show Tables" "Create Table" "Insert in Table" "Select from Table" "Delete Table" "Back to Main Menu"
 		do
@@ -15,7 +16,7 @@ function menu {
 				"Create Table" )
 					echo "___________________________________________"
 					echo "Enter the name of the new table"
-					read tableName
+					read -e tableName
 					echo "___________________________________________"
 					
 					createTable $path $tableName
@@ -23,25 +24,25 @@ function menu {
 				"Insert in Table" )
 					echo "___________________________________________"
 					echo "Enter the name of the table"
-					read tableName
+					read -e tableName
 					echo "___________________________________________"
                    insertInTable $path $tableName
 				break ;;
 				"Select from Table" )
 					echo "___________________________________________"
 					echo "Enter a table name to show its data"
-					read tableName
+					read -e tableName
 					echo "___________________________________________"
 					selectFromTable $path $tableName
 				break ;;
 				"Delete Table" )
 					echo "___________________________________________"
 					echo "Enter a table name to delete"
-					read tableName
+					read -e tableName
 					echo "___________________________________________"
 					echo "1) Delete the whole table"
 					echo "2) Delete a record from the table"
-					read choice
+					read -e choice
 					case $choice in
 						1 ) 
 						deleteTable $path $tableName
