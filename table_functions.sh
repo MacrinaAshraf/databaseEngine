@@ -8,7 +8,7 @@ function createTable {
     validFlag=false
     while [ "$validFlag" == false ]
     do
-        read -p -e "Enter how many columns do you want to add to you table: " noOfColumns
+        read -p "Enter how many columns do you want to add to you table: " noOfColumns
         if [[ $noOfColumns =~ ^[1-9]+$ ]]
         then
             validFlag=true
@@ -26,7 +26,7 @@ function createTable {
         validFlag=false
         while [ "$validFlag" == false ]
         do
-            read -e -p "Enter the name of the column: " colName
+            read -p "Enter the name of the column: " colName
             if [[ $colName =~ ^([[:lower:]]|[[:upper:]])+$ ]]
             then
                 validFlag=true
@@ -154,7 +154,7 @@ function insertInTable {
             then
                 if [ "${colTypes[counter]}" = "int" ] 
                 then
-                    if [[ "$entry" =~ ^[1-9]+$ ]]
+                    if [[ "$entry" =~ ^[0-9]+$ ]]
                     then
                         if [ "$counter" = "$temp" ]
                         then

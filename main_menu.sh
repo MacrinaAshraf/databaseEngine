@@ -10,8 +10,11 @@ function mainmenu {
 		do
 			case $i in
 				"Create Database" ) 
+				
 					echo "___________________________________________"
-					createDatabase
+					echo "type Database Name please";
+					read -e dbName;
+					createDatabase $dbName
 					echo "___________________________________________"
 				break ;;
 				"Connect to Database" )

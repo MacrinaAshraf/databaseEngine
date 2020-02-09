@@ -30,19 +30,19 @@ function connectToDatabase {
 
 function createDatabase {
 
-	echo "type Database Name please";
-	read -e dbName;
-
-    if [ -z $dbName ]
+    if [ "$#" -ne 1 ]
     then
-        echo " Invalid Input"
+        echo "Invalid Input"
+    #elif [ -z $1 ]
+    #then
+    #    echo "Invalid Input"
     else    
-        if [ -d "Database/$dbName" ]
+        if [ -d "Database/$1" ]
         then
-            echo "$dbName already exists"
+            echo "$1 already exists"
         else
-            mkdir Database/$dbName;
-            echo "$dbName created successfully";
+            mkdir Database/$1;
+            echo "$1 created successfully";
         fi
     fi
 }
@@ -50,7 +50,7 @@ function createDatabase {
 function dropDatabase {
     #to-do
     #validation on input that it isn't empty
-    if [ "$1" != "" ] 
+    if [ "$#" -eq 1 ] 
     then
         if [ -d "Database/$1" ]
         then
